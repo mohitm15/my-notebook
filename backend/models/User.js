@@ -13,6 +13,18 @@ const UserSchema = new Schema({
   password: {
     type: String,
     required: true,
+    validate(value) {
+      if(value.length < 5) {
+        throw new Error( "Minimum length is 8 characters");
+      }
+      else if (!value.match(/\d/) || !value.match(/[a-zA-Z]/) ) {
+        throw new Error(
+          "Password must contain at least one letter and one number"
+        );
+      }
+
+    }
+    
   },
   date: {
     type: Date,
@@ -20,4 +32,7 @@ const UserSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model("users", UserSchema);
+const User = mongoose.model("users", UserSchema);
+User.createIndexes();
+
+module.exports = User;
