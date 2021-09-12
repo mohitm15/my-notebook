@@ -15,7 +15,7 @@ const UserSchema = new Schema({
     required: true,
     validate(value) {
       if(value.length < 5) {
-        throw new Error( "Minimum length is 8 characters");
+        throw new Error( "Minimum length is 5 characters");
       }
       else if (!value.match(/\d/) || !value.match(/[a-zA-Z]/) ) {
         throw new Error(
@@ -33,6 +33,4 @@ const UserSchema = new Schema({
 });
 
 const User = mongoose.model("users", UserSchema);
-User.createIndexes();
-
 module.exports = User;
