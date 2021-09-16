@@ -3,10 +3,10 @@ const { body, validationResult } = require("express-validator");
 const router = express.Router();
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 const JWT_SECRET = "mohitisagood$boy";
-//Creating a User :POST - "/api/auth/createuser"
 
+//Creating a User :POST - "/api/auth/createuser"
 router.post(
   "/createuser",
 
@@ -28,33 +28,79 @@ router.post(
         //console.log(user.email);
         return res.status(400).json({ error: "Email Already Taken" });
       }
-    
-    //hashing the password here
-    const salt = await bcrypt.genSalt(10);
-    const secPass = await bcrypt.hash(req.body.password, salt);
-    //user is created
+
+      //hashing the password here
+      const salt = await bcrypt.genSalt(10);
+      const secPass = await bcrypt.hash(req.body.password, salt);
+      //user is created
       user = await User.create({
         name: req.body.name,
         email: req.body.email,
         password: secPass,
-      })
+      });
 
       //passing the id as data to make jwt token
       const data = {
-        user : {
-          id: user.id
-        }
-      }
+        user: {
+          id: user.id,
+        },
+      };
 
       const authToken = jwt.sign(data, JWT_SECRET);
-      //console.log(authToken) 
+      //console.log(authToken)
 
       //res.json(user);
-      res.json({authToken});
-
+      res.json({ authToken });
     } catch (error) {
       console.log(error.message);
-      res.status(500).send("Some error occured")
+      res.status(500).send("internal server error");
+    }
+  }
+);
+
+//Authenticating a User :POST - "/api/auth/login"
+router.post(
+  "/login",
+
+  body("email", "Enter a valid email").isEmail(),
+
+  async (req, res) => {
+    //If there are errors, then return bad request + Errors
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    const { email, password } = req.body;
+
+    try {
+      let user = await User.findOne({ email });
+
+      // console.log("user - "+user)
+
+      if (!user) {
+        res.status(400).send("Login with correct credentials!");
+      }
+
+      //compare the pwd bw 'hash of pwd entered' & 'hash from your pwdDB'
+      const passwordCompare = await bcrypt.compare(password, user.password);
+
+      if (!passwordCompare) {
+        res.status(400).send("Login with correct credentials!");
+      }
+
+      const payload = {
+        user: {
+          id: user.id,
+        },
+      };
+
+      const authToken = jwt.sign(payload, JWT_SECRET);
+      res.json({ authToken });
+      
+    } catch (error) {
+      console.log(error.message);
+      res.status(500).send("Internal Server Error");
     }
   }
 );
