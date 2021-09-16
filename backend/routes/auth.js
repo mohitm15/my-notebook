@@ -5,8 +5,9 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = "mohitisagood$boy";
+const fecthUser = require("../middleware/fetchUser");
 
-//Creating a User :POST - "/api/auth/createuser"
+//ROUTE 1 :Creating a User :POST - "/api/auth/createuser"
 router.post(
   "/createuser",
 
@@ -58,7 +59,7 @@ router.post(
   }
 );
 
-//Authenticating a User :POST - "/api/auth/login"
+//ROUTE 2 :Authenticating a User :POST - "/api/auth/login"
 router.post(
   "/login",
 
@@ -97,12 +98,29 @@ router.post(
 
       const authToken = jwt.sign(payload, JWT_SECRET);
       res.json({ authToken });
-      
+
     } catch (error) {
       console.log(error.message);
       res.status(500).send("Internal Server Error");
     }
   }
 );
+
+
+//ROUTE 3 :Get Loggedin user details  :GET - "/api/auth/getUser" LOGIN REQUIRED;
+
+router.get( "/getUser", fecthUser, async (req, res) => {
+    
+    try {
+
+      const userid = req.user.id; //gets userid from fetchUser middleware fn
+      let user = await User.findById(userid);
+      res.send(user);
+      
+    }  catch (error) {
+      console.log(error.message);
+      res.status(500).send("Internal Server Error");
+    }
+  });
 
 module.exports = router;
