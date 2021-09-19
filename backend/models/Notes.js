@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const NotesSchema = new Schema({
   user: {
-    //taking user as a reference/foreign key
+    //taking user as a reference/foreign  key
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
   },
