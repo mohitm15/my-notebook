@@ -10,10 +10,10 @@ const fecthUser = require("../middleware/fetchUser");
 //ROUTE 1 :Creating a User :POST - "/api/auth/createuser"
 router.post(
   "/createuser",
-
-  body("name", "Name must have at least 3 characters").isLength({ min: 3 }),
-  body("email", "Enter a valid email").isEmail(),
-
+  [
+    body("name", "Name must have at least 3 characters").isLength({ min: 3 }),
+    body("email", "Enter a valid email").isEmail(),
+  ],
   async (req, res) => {
     //If there are errors, then return bad request + Errors
     const errors = validationResult(req);
@@ -98,7 +98,6 @@ router.post(
 
       const authToken = jwt.sign(payload, JWT_SECRET);
       res.json({ authToken });
-
     } catch (error) {
       console.log(error.message);
       res.status(500).send("Internal Server Error");
@@ -106,21 +105,17 @@ router.post(
   }
 );
 
-
 //ROUTE 3 :Get Loggedin user details  :GET - "/api/auth/getUser" LOGIN REQUIRED;
 
-router.get( "/getUser", fecthUser, async (req, res) => {
-    
-    try {
-
-      const userid = req.user.id; //gets userid from fetchUser middleware fn
-      let user = await User.findById(userid);
-      res.send(user);
-      
-    }  catch (error) {
-      console.log(error.message);
-      res.status(500).send("Internal Server Error");
-    }
-  });
+router.get("/getUser", fecthUser, async (req, res) => {
+  try {
+    const userid = req.user.id; //gets userid from fetchUser middleware fn
+    let user = await User.findById(userid);
+    res.send(user);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+});
 
 module.exports = router;
