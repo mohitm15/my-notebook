@@ -7,11 +7,11 @@ import NoteState from "./context/notes/NoteState";
 
 function App() {
   return (
-    <div className="App">
+    <>
       <NoteState>
         <Router>
           <Navbar />
-          <div>
+          <div className="container">
             <Switch>
               <Route exact path="/">
                 <Home />
@@ -23,7 +23,7 @@ function App() {
           </div>
         </Router>
       </NoteState>
-    </div>
+    </>
   );
 }
 
