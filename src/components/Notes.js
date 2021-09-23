@@ -12,8 +12,8 @@ function Notes() {
       <div className="my-5">
         <h2>Your Notes</h2>
         <div className="row my-3">
-          {notes.map((item) => {
-            return <Noteitem note={item} />;
+          {notes.map((item,key) => {
+            return <Noteitem key={key} note={item} />;
           })}
         </div>
       </div>
