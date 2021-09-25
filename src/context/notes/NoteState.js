@@ -5,7 +5,7 @@ const NoteState = (props) => {
 
     const notesInitial = [
         {
-            "_id": "61472b96347b31b44ed851ff",
+            "_id": "61472b96347b31b44ed851ff8",
             "user": "61432ac5225cd230999f178d",
             "title": "First song UPDATED3",
             "description": "First Debut song in launched UPDATED3",
@@ -14,7 +14,7 @@ const NoteState = (props) => {
             "__v": 0
         },
         {
-            "_id": "61473ebd4ce15cca37954d28",
+            "_id": "61473ebd4ce15cca37954d287",
             "user": "61432ac5225cd230999f178d",
             "title": "First song (debut)",
             "description": "First Debut song in launched in 2015.",
@@ -23,7 +23,7 @@ const NoteState = (props) => {
             "__v": 0
         },
         {
-            "_id": "61472b96347b31b44ed851ff",
+            "_id": "61472b96347b31b44ed851ff6",
             "user": "61432ac5225cd230999f178d",
             "title": "First song UPDATED3",
             "description": "First Debut song in launched UPDATED3",
@@ -32,7 +32,7 @@ const NoteState = (props) => {
             "__v": 0
         },
         {
-            "_id": "61473ebd4ce15cca37954d28",
+            "_id": "61473ebd4ce15cca37954d285",
             "user": "61432ac5225cd230999f178d",
             "title": "First song (debut)",
             "description": "First Debut song in launched in 2015.",
@@ -41,7 +41,7 @@ const NoteState = (props) => {
             "__v": 0
         },
         {
-            "_id": "61472b96347b31b44ed851ff",
+            "_id": "61472b96347b31b44ed851ff4",
             "user": "61432ac5225cd230999f178d",
             "title": "First song UPDATED3",
             "description": "First Debut song in launched UPDATED3",
@@ -50,7 +50,7 @@ const NoteState = (props) => {
             "__v": 0
         },
         {
-            "_id": "61473ebd4ce15cca37954d28",
+            "_id": "61473ebd4ce15cca37954d283",
             "user": "61432ac5225cd230999f178d",
             "title": "First song (debut)",
             "description": "First Debut song in launched in 2015.",
@@ -59,7 +59,7 @@ const NoteState = (props) => {
             "__v": 0
         },
         {
-            "_id": "61472b96347b31b44ed851ff",
+            "_id": "61472b96347b31b44ed851ff2",
             "user": "61432ac5225cd230999f178d",
             "title": "First song UPDATED3",
             "description": "First Debut song in launched UPDATED3",
@@ -68,7 +68,7 @@ const NoteState = (props) => {
             "__v": 0
         },
         {
-            "_id": "61473ebd4ce15cca37954d28",
+            "_id": "61473ebd4ce15cca37954d281",
             "user": "61432ac5225cd230999f178d",
             "title": "First song (debut)",
             "description": "First Debut song in launched in 2015.",
@@ -105,6 +105,10 @@ const NoteState = (props) => {
 
     // Delete a note
     const deleteNote = (id) =>{
+        //TODO: Api call
+        console.log("Deleting a note with id -"+id)
+
+        setNotes(notes.filter(note => (note._id !== id)));
         
     }
     
