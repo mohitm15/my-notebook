@@ -27,6 +27,7 @@ router.post(
   ],
   async (req, res) => {
     try {
+      
       const { title, description, tag } = req.body;
 
       //If there are errors, then return bad request + Errors

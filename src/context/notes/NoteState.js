@@ -3,83 +3,25 @@ import NoteContext from "./noteContext";
 
 const NoteState = (props) => {
 
-    const notesInitial = [
-        {
-            "_id": "61472b96347b31b44ed851ff8",
-            "user": "61432ac5225cd230999f178d",
-            "title": "First song UPDATED3",
-            "description": "First Debut song in launched UPDATED3",
-            "tag": "UPDATED3",
-            "date": "2021-09-19T12:22:46.552Z",
-            "__v": 0
-        },
-        {
-            "_id": "61473ebd4ce15cca37954d287",
-            "user": "61432ac5225cd230999f178d",
-            "title": "First song (debut)",
-            "description": "First Debut song in launched in 2015.",
-            "tag": "music",
-            "date": "2021-09-19T13:44:29.386Z",
-            "__v": 0
-        },
-        {
-            "_id": "61472b96347b31b44ed851ff6",
-            "user": "61432ac5225cd230999f178d",
-            "title": "First song UPDATED3",
-            "description": "First Debut song in launched UPDATED3",
-            "tag": "UPDATED3",
-            "date": "2021-09-19T12:22:46.552Z",
-            "__v": 0
-        },
-        {
-            "_id": "61473ebd4ce15cca37954d285",
-            "user": "61432ac5225cd230999f178d",
-            "title": "First song (debut)",
-            "description": "First Debut song in launched in 2015.",
-            "tag": "music",
-            "date": "2021-09-19T13:44:29.386Z",
-            "__v": 0
-        },
-        {
-            "_id": "61472b96347b31b44ed851ff4",
-            "user": "61432ac5225cd230999f178d",
-            "title": "First song UPDATED3",
-            "description": "First Debut song in launched UPDATED3",
-            "tag": "UPDATED3",
-            "date": "2021-09-19T12:22:46.552Z",
-            "__v": 0
-        },
-        {
-            "_id": "61473ebd4ce15cca37954d283",
-            "user": "61432ac5225cd230999f178d",
-            "title": "First song (debut)",
-            "description": "First Debut song in launched in 2015.",
-            "tag": "music",
-            "date": "2021-09-19T13:44:29.386Z",
-            "__v": 0
-        },
-        {
-            "_id": "61472b96347b31b44ed851ff2",
-            "user": "61432ac5225cd230999f178d",
-            "title": "First song UPDATED3",
-            "description": "First Debut song in launched UPDATED3",
-            "tag": "UPDATED3",
-            "date": "2021-09-19T12:22:46.552Z",
-            "__v": 0
-        },
-        {
-            "_id": "61473ebd4ce15cca37954d281",
-            "user": "61432ac5225cd230999f178d",
-            "title": "First song (debut)",
-            "description": "First Debut song in launched in 2015.",
-            "tag": "music",
-            "date": "2021-09-19T13:44:29.386Z",
-            "__v": 0
-        },
-
-    ]
-
+    const notesInitial = [];
+    const host = "http://localhost:5000";
     const [notes,setNotes] = useState(notesInitial);
+
+    //fetching all the notes
+    const getNotes = async() => {
+
+        const url = `${host}/api/notes/fetchallnotes`;
+        //API call
+        const response = await fetch(url, {
+            method: 'GET', 
+            headers: {
+              'Content-Type': 'application/json',
+              'auth-token' : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE0MzJhYzUyMjVjZDIzMDk5OWYxNzhkIn0sImlhdCI6MTYzMTgwNDM3N30.wxrrT09Pmc8KU0AYlG0hVgFJeJlUcotEgGr3BkHFEhk"
+            },
+          });
+          const finalNotes = await response.json();
+          setNotes(finalNotes);
+    }
 
     //Add a note
     const addNote = (title,description,tag) => {
@@ -113,12 +55,22 @@ const NoteState = (props) => {
     }
     
     // Edit a note
-    const editNote = (id) =>{
+    const editNote = (id, title, description, tag) =>{
         
+        console.log("Editing a note")
+        for (let i = 0; i < notes.length; i++) {
+            const element = notes[i];
+            if(element._id === id) {
+                element.title = title;
+                element.description = description;
+                element.tag = tag;
+            }
+        }
+        setNotes(notes);
     }
 
     return(
-        <NoteContext.Provider value={{notes,addNote,deleteNote,editNote}}>
+        <NoteContext.Provider value={{notes,getNotes,addNote,deleteNote,editNote}}>
             {props.children}
         </NoteContext.Provider>
     )
