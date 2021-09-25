@@ -76,18 +76,41 @@ const NoteState = (props) => {
     }
     
     // Edit a note
-    const editNote = (id, title, description, tag) =>{
+    const editNote = async (id, title, description, tag) =>{
         
-        console.log("Editing a note")
-        for (let i = 0; i < notes.length; i++) {
-            const element = notes[i];
-            if(element._id === id) {
-                element.title = title;
-                element.description = description;
-                element.tag = tag;
-            }
-        }
-        setNotes(notes);
+        // console.log("Editing a note with id "+ id)
+        const url = `${host}/api/notes/updatenote/${id}`;
+        //API call
+        const response = await fetch(url, {
+            method: 'PUT', 
+            headers: {
+              'Content-Type': 'application/json',
+              'auth-token' : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE0MzJhYzUyMjVjZDIzMDk5OWYxNzhkIn0sImlhdCI6MTYzMTgwNDM3N30.wxrrT09Pmc8KU0AYlG0hVgFJeJlUcotEgGr3BkHFEhk"
+            },
+            body:JSON.stringify({title, description, tag})
+          });
+         
+          const finalNotes =await response.json();
+          console.log(finalNotes);
+        
+          //creating a deep copy of response from the API
+          let noteDeepCopy = JSON.parse(JSON.stringify(notes));
+
+
+          //Logic to edit in frontend
+          for (let i = 0; i < noteDeepCopy.length; i++) {
+              const element = noteDeepCopy[i]; 
+              if(element._id === id){
+                noteDeepCopy[i].title = title;
+                noteDeepCopy[i].description = description;
+                noteDeepCopy[i].tag = tag;
+                break;
+              }
+              
+          }
+          //console.log("notes - ",noteDeepCopy)
+          setNotes(noteDeepCopy);
+    
     }
 
     return(
