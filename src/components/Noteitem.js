@@ -5,7 +5,9 @@ const Noteitem = (props) => {
 
   const contextForNotes = useContext(noteContext);
   const { deleteNote} = contextForNotes;
-  const { note } = props;
+  const { note, updateNote } = props;
+
+  // updatenote is used here by edit-icon
 
   return (
     <div className="col-md-3">
@@ -15,7 +17,8 @@ const Noteitem = (props) => {
           Note 1
           <span className="d-flex justify-content-end">
             <i className="fas fa-trash-alt mx-2 " onClick={()=> deleteNote(note._id)}></i>
-            <i className="far fa-edit mx-2"></i>
+            <i className="far fa-edit mx-2" onClick={()=>updateNote(note)}></i> 
+            
           </span>
         </div>
         <div className="card-body">

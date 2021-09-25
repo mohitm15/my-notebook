@@ -25,7 +25,7 @@ const NoteState = (props) => {
     }
 
     //Add a note
-    const addNote = async(id,title,description,tag) => {
+    const addNote = async(title,description,tag) => {
 
         const url = `${host}/api/notes/addnote`;
         //API call
