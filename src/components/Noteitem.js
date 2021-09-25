@@ -9,6 +9,7 @@ const Noteitem = (props) => {
 
   return (
     <div className="col-md-3">
+
       <div className="card text-white bg-dark mb-3 my-3 ">
         <div className="card-header ">
           Note 1
