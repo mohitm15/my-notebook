@@ -85,6 +85,8 @@ function Notes() {
                     value={note.etitle}
                     aria-describedby="emailHelp"
                     onChange={onChange}
+                    minLength={5}
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -98,6 +100,8 @@ function Notes() {
                     name="edescription"
                     value={note.edescription}
                     onChange={onChange}
+                    minLength={5}
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -128,6 +132,7 @@ function Notes() {
                 onClick={handleClick}
                 type="button"
                 className="btn btn-primary"
+                disabled={note.etitle.length<5 || note.edescription.length <5}
               >
                 Update Note
               </button>
