@@ -38,20 +38,11 @@ const NoteState = (props) => {
             body:JSON.stringify({title,description, tag})
           });
         
-        const notetobeadded = response.json();
-        console.log(notetobeadded);
+        const notetobeadded =await response.json();
+        //console.log(notetobeadded);
 
-        const note = {
-            "_id": "61322f119553781a8ca8d0e08",  //These _id gets overwriiten by the unique id given by mongo
-            "user": "6131dc5e3e4037cd4734a0664",
-            "title": title,
-            "description": description,
-            "tag": tag,
-            "date": "2021-09-03T14:20:09.668Z",//These timestamps are also gets overwriiten by current timestamp
-          };
-        
-        //pushing the note to the notes array
-        setNotes(notes.concat(note));
+        //setting the note to the notes array
+        setNotes(notes.concat(notetobeadded));
 
     }
 
@@ -67,9 +58,8 @@ const NoteState = (props) => {
               'auth-token' : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE0MzJhYzUyMjVjZDIzMDk5OWYxNzhkIn0sImlhdCI6MTYzMTgwNDM3N30.wxrrT09Pmc8KU0AYlG0hVgFJeJlUcotEgGr3BkHFEhk"
             },
           });
-        
         const finalNotes = response.json();
-        console.log(finalNotes);
+        console.log(finalNotes);  
         const newNotes = notes.filter(note => {return note._id !== id});
         setNotes(newNotes);
         
