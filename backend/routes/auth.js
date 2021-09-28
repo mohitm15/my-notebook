@@ -73,6 +73,8 @@ router.post(
     }
 
     const { email, password } = req.body;
+    
+    let success = false;
 
     try {
       let user = await User.findOne({ email });
@@ -80,15 +82,17 @@ router.post(
       // console.log("user - "+user)
 
       if (!user) {
-        res.status(400).send("Login with correct credentials!");
+        res.status(400).json({success,error:"Login with correct credentials!"});
       }
 
       //compare the pwd bw 'hash of pwd entered' & 'hash from your pwdDB'
       const passwordCompare = await bcrypt.compare(password, user.password);
 
       if (!passwordCompare) {
-        res.status(400).send("Login with correct credentials!");
+        res.status(400).json({success,error:"Login with correct credentials!"});
       }
+      //nodemon crashes whenever PASSWORD === NULL
+
 
       const payload = {
         user: {
@@ -97,7 +101,8 @@ router.post(
       };
 
       const authToken = jwt.sign(payload, JWT_SECRET);
-      res.json({ authToken });
+      success = true;
+      res.json({ success, authToken });
     } catch (error) {
       console.log(error.message);
       res.status(500).send("Internal Server Error");
