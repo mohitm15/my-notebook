@@ -15,10 +15,12 @@ router.post(
     body("email", "Enter a valid email").isEmail(),
   ],
   async (req, res) => {
+
+    let success = false;
     //If there are errors, then return bad request + Errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({success, errors: errors.array() });
     }
 
     try {
@@ -27,7 +29,7 @@ router.post(
       //console.log("user.nemail = " + user);
       if (user) {
         //console.log(user.email);
-        return res.status(400).json({ error: "Email Already Taken" });
+        return res.status(400).json({success, error: "Email Already Taken" });
       }
 
       //hashing the password here
@@ -50,8 +52,10 @@ router.post(
       const authToken = jwt.sign(data, JWT_SECRET);
       //console.log(authToken)
 
+      
+      success = true;
       //res.json(user);
-      res.json({ authToken });
+      res.json({success, authToken });
     } catch (error) {
       console.log(error.message);
       res.status(500).send("internal server error");
@@ -101,6 +105,7 @@ router.post(
       };
 
       const authToken = jwt.sign(payload, JWT_SECRET);
+      
       success = true;
       res.json({ success, authToken });
     } catch (error) {
