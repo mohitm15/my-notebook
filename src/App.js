@@ -25,7 +25,7 @@ function App() {
     <>
       <NoteState>
         <Router>
-          <Navbar />
+          <Navbar showAlert={showAlert}/>
           <Alert alert={alert}/>
           <div className="container">
             <Switch>
@@ -48,5 +48,6 @@ function App() {
     </>
   );
 }
+//#00ff50;
 
 export default App;

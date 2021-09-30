@@ -25,9 +25,8 @@ const Login = (props) => {
           if(json.success === true) {
             //storing the authtoken
             localStorage.setItem('token',json.authToken);
-            history.push("/");
             props.showAlert("User logged in successfully", "info");
-
+            history.push("/");
           } 
           else {
               props.showAlert("invalid Credentials", "danger")
@@ -36,7 +35,8 @@ const Login = (props) => {
     }
 
     return (
-        <div>
+        <div className='mt-3'>
+            <h2 className="my-3"> Login to continue to use my-notebook</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>

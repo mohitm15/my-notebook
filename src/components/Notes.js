@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import noteContext from "../context/notes/noteContext";
 import Noteitem from "./Noteitem";
 import AddNote from "./AddNote";
+import { useHistory } from "react-router-dom";
 
 function Notes(props) {
   const contextForNotes = useContext(noteContext);
@@ -9,9 +10,15 @@ function Notes(props) {
   const ref = useRef(null);
   const refClose = useRef(null);
   const [note, setNote] = useState({id:"", etitle: "", edescription: "", etag: "" });
+  const history = useHistory();
 
   useEffect(() => {
-    getNotes();
+    if(localStorage.getItem('token')) {
+      getNotes();
+    }
+    else {
+      history.push("/login");
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

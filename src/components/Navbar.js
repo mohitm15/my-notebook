@@ -1,10 +1,16 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (props) => {
 
   let location = useLocation();
+  let history = useHistory();
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    props.showAlert("Logged Out succesfully! ", "info");
+    history.push("/login");
+  }
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -30,10 +36,13 @@ const Navbar = () => {
             <Link className={`nav-link ${location.pathname==="/about"? "active": ""}`} to="/about">About</Link>
             </li>
           </ul>
+          { !localStorage.getItem('token') ?
           <form className="d-flex">
             <Link class="btn btn-primary mx-2" to="/login" role="button">Login</Link>
             <Link class="btn btn-primary mx-2" to="/signup" role="button">SignUp</Link>
-          </form>
+          </form>: 
+            <button className="btn btn-primary mx-2" onClick={handleLogout}>Logout</button>
+          }
         </div>
       </div>
     </nav>

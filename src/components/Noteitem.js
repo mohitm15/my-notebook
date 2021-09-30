@@ -19,7 +19,7 @@ const Noteitem = (props) => {
 
       <div className="card text-white bg-dark mb-3 my-3 ">
         <div className="card-header ">
-          Note 1
+          Note
           <span className="d-flex justify-content-end">
             <i className="fas fa-trash-alt mx-2 " onClick={()=> handleDelete()}></i>
             <i className="far fa-edit mx-2" onClick={()=>updateNote(note)}></i> 
