@@ -9,6 +9,11 @@ const Noteitem = (props) => {
 
   // updatenote is used here by edit-icon
 
+  const handleDelete = () => {
+    deleteNote(note._id);
+    props.showAlert("Note Deleted successfully!", "danger");
+  }
+
   return (
     <div className="col-md-3">
 
@@ -16,7 +21,7 @@ const Noteitem = (props) => {
         <div className="card-header ">
           Note 1
           <span className="d-flex justify-content-end">
-            <i className="fas fa-trash-alt mx-2 " onClick={()=> deleteNote(note._id)}></i>
+            <i className="fas fa-trash-alt mx-2 " onClick={()=> handleDelete()}></i>
             <i className="far fa-edit mx-2" onClick={()=>updateNote(note)}></i> 
             
           </span>

@@ -3,7 +3,7 @@ import noteContext from "../context/notes/noteContext";
 import Noteitem from "./Noteitem";
 import AddNote from "./AddNote";
 
-function Notes() {
+function Notes(props) {
   const contextForNotes = useContext(noteContext);
   const { notes, getNotes, editNote } = contextForNotes;
   const ref = useRef(null);
@@ -12,7 +12,6 @@ function Notes() {
 
   useEffect(() => {
     getNotes();
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -31,6 +30,7 @@ function Notes() {
     refClose.current.click();
     //console.log("Updating the note...", note);
     editNote(note.id,note.etitle,note.edescription,note.etag);
+    props.showAlert("Notes updated successfully!","success");
     e.preventDefault();
   };
 
@@ -41,7 +41,7 @@ function Notes() {
 
   return (
     <>
-      <AddNote />
+      <AddNote showAlert={props.showAlert} />
       <button
         ref={ref}
         type="button"
@@ -49,7 +49,7 @@ function Notes() {
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        Launch demo modal
+        Edit the note
       </button>
       <div
         className="modal fade"
@@ -145,7 +145,7 @@ function Notes() {
         <h2>Your Notes</h2>
         <div className="row my-3">
           {notes.map((item, key) => {
-            return <Noteitem key={key} updateNote={updateNote} note={item} />; //note value is sent from props to noteitem
+            return <Noteitem key={key} updateNote={updateNote} note={item} showAlert={props.showAlert} />; //note value is sent from props to noteitem
           })}
         </div>
       </div>
