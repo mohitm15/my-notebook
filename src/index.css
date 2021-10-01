@@ -43,7 +43,7 @@ code {
 
 }
 
-#email, #password {
+#email, #password, #name, #confmpassword {
   background: transparent;
   border: 1px black solid;
 }

@@ -46,7 +46,7 @@ const Login = (props) => {
       </div>
       <div id="loginbody">
         <div className="mt-3">
-          <h2 className="my-3 display-5"> Login to continue</h2>
+          <h2 className="my-3"> Login to continue</h2>
           <form onSubmit={handleSubmit} className="login-form">
             <div className="mb-3">
               <label htmlFor="email" className="form-label">

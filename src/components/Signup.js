@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import { useHistory } from 'react-router-dom';
+import imgpath from "../assets/notepic.jpg";
 
 const Signup = (props) => {
 
@@ -11,6 +12,10 @@ const Signup = (props) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
         //input mei value typed ho sake,jaise jaise value change ho vese-vese note me set ho jaye
       };
+
+      const goToLogin = () => {
+        history.push("/login")
+      }
 
       const handleSubmit = async(e) => {
         e.preventDefault();
@@ -35,9 +40,14 @@ const Signup = (props) => {
     }
 
     return (
-        <div className="container mt-3">
-            <h2>Create an account here</h2>
-            <form onSubmit={handleSubmit}>
+      <div className="container" id="manku">
+      <div id="picturebody">
+        <img src={imgpath} alt="note-pic" width="100%" />
+      </div>
+        <div id="loginbody">
+        <div className="mt-3">
+            <h2 className="my-2">Create your account here </h2>
+            <form onSubmit={handleSubmit} className="login-form">
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Name</label>
                     <input type="text" className="form-control" id="name" onChange={onChange} name="name" value={credentials.name} aria-describedby="emailHelp" />
@@ -54,8 +64,28 @@ const Signup = (props) => {
                     <label htmlFor="confmpassword" className="form-label">Confirm Password</label>
                     <input type="password" className="form-control" id="confmpassword" onChange={onChange} name="confmpassword" value={credentials.confmpassword} minLength={5} required />
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <div className="d-grid gap-2 my-4 col-6 mx-auto">
+              <button type="submit" className="btn btn-success ">
+                SignUp
+              </button>
+            </div>
+            <hr />
+            <div className="mb-3 text-center">
+              <div id="emailHelp" className="form-text center my-3">
+                Already have an account ?
+              </div>
+              <div className="d-grid gap-2 my-3 col-6 mx-auto">
+                <button onClick={goToLogin} className="btn btn-success ">
+                   Login
+                </button>
+              </div>
+            </div>
             </form>
+            <div className="text-center my-3" id="bottom-text">
+            mynotebook
+        </div>
+        </div>
+        </div>
         </div>
     )
 }
