@@ -71,3 +71,20 @@ code {
 i{
   cursor: pointer;
 }
+
+#notecard {
+  transition:0.5s;
+}
+
+#notecard:hover {
+  transform: scale(1.10);
+  box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+}
+
+/* card color     
+background-color: #181a1f;
+color: whitesmoke; 
+
+
+
+*/

@@ -6,14 +6,15 @@ import { useHistory } from "react-router-dom";
 
 function Notes(props) {
   const contextForNotes = useContext(noteContext);
+  // console.log("cof notese = "+contextForNotes)
   const { notes, getNotes, editNote } = contextForNotes;
   const ref = useRef(null);
   const refClose = useRef(null);
-  const [note, setNote] = useState({id:"", etitle: "", edescription: "", etag: "" });
+  const [note, setNote] = useState({ id: "", etitle: "", edescription: "", etag: "" });
   const history = useHistory();
 
   useEffect(() => {
-    if(localStorage.getItem('token')) {
+    if (localStorage.getItem('token')) {
       getNotes();
     }
     else {
@@ -26,7 +27,7 @@ function Notes(props) {
   const updateNote = (currentNote) => {
     ref.current.click();  //it clicks the refered element i.e. button here
     setNote({
-      id:currentNote._id,
+      id: currentNote._id,
       etitle: currentNote.title,
       edescription: currentNote.description,
       etag: currentNote.tag,
@@ -36,8 +37,8 @@ function Notes(props) {
   const handleClick = (e) => {
     refClose.current.click();
     //console.log("Updating the note...", note);
-    editNote(note.id,note.etitle,note.edescription,note.etag);
-    props.showAlert("Notes updated successfully!","success");
+    editNote(note.id, note.etitle, note.edescription, note.etag);
+    props.showAlert("Notes updated successfully!", "success");
     e.preventDefault();
   };
 
@@ -139,7 +140,7 @@ function Notes(props) {
                 onClick={handleClick}
                 type="button"
                 className="btn btn-primary"
-                disabled={note.etitle.length<5 || note.edescription.length <5}
+                disabled={note.etitle.length < 5 || note.edescription.length < 5}
               >
                 Update Note
               </button>
