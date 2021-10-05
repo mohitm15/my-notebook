@@ -20,6 +20,7 @@ const Noteitem = (props) => {
   let cardStyle = {
     backgroundColor: "light",
     color: "black",
+    border: "1px solid black",
   };
   let cardHeader = {
     backgroundColor: "#e5e5e5",
@@ -29,6 +30,7 @@ const Noteitem = (props) => {
     cardStyle = {
       backgroundColor: "white",
       color: "black",
+      border: "1px solid black",
     };
     cardHeader = {
       backgroundColor: "#e5e5e5",
@@ -37,12 +39,17 @@ const Noteitem = (props) => {
     cardStyle = {
       backgroundColor: "#2d2d2d",
       color: "whitesmoke",
+      border: "1px solid whitesmoke",
     };
     cardHeader = {
       backgroundColor: "#181a1f",
     };
   } else if (theme.anotherDark) {
-    cardStyle = { backgroundColor: "black", color: "#84ff00" };
+    cardStyle = {
+      backgroundColor: "black",
+      color: "#84ff00",
+      border: "1px solid #84ff00",
+    };
     cardHeader = {
       backgroundColor: "black",
     };
