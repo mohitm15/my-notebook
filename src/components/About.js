@@ -1,10 +1,39 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import themeContext from '../context/themes/themeContext'
 
 
 const About = () => {
 
+
+    const contextForThemes = useContext(themeContext);
+    const { theme } = contextForThemes;
+    console.log("t-lig = "+theme.light)
+
+    let aboutStyle = {
+        color: 'black', 
+        paddingBottom:'600px'
+    }
+
+
+    if(theme.light) {
+        aboutStyle = {
+            color: 'black',
+            paddingBottom:'600px'
+        }
+    } else if(theme.dark) {
+        aboutStyle = {
+            color: 'white',
+            paddingBottom:'600px'
+        }
+    } else if(theme.anotherDark) {
+        aboutStyle = {
+            color: '#84ff00',
+            paddingBottom:'600px'
+        }
+    }
+
     return (
-        <div>
+        <div style={aboutStyle}>
             <h1>This is About page.</h1>
         </div>
     )

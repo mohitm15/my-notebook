@@ -1,18 +1,21 @@
 import "./App.css";
-import { useState } from "react";
+import { useState,useContext } from "react";
 import Home from "./components/Home";
 import About from "./components/About";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NoteState from "./context/notes/NoteState";
-import ThemeState from "./context/themes/ThemeState";
 import Alert from "./components/Alert";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import themeContext from "./context/themes/themeContext";
 
 function App() {
 
   const [alert, setAlert] = useState(null);
+  const contextForThemes = useContext(themeContext);
+  const { theme } = contextForThemes;
+
 
   const showAlert = (message, type) => {
     setAlert({msg: message, type:type});
@@ -21,11 +24,23 @@ function App() {
     }, 1500);
   }
 
+  let bgColor = 'white';
+  if(theme.light) {
+    bgColor ='white';
+  } 
+  else if(theme.dark) {
+    bgColor = '#2d2d2d';
+  }
+  else if(theme.anotherDark) {
+    bgColor = 'black';
+  }
+
+
 
   return (
     <>
-      <ThemeState>
       <NoteState>
+        <div style={{backgroundColor:bgColor, paddingBottom:'150px'}}>
         <Router>
           <Navbar showAlert={showAlert}/>
           <Alert alert={alert}/>
@@ -46,8 +61,8 @@ function App() {
             </Switch>
           </div>
         </Router>
+        </div>
       </NoteState>
-      </ThemeState>
     </>
   );
 }

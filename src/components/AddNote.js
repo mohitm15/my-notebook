@@ -31,7 +31,7 @@ const AddNote = (props) => {
     color: "white",
   };
   let buttonStyle = {
-    backgroundColor: "orange",
+    backgroundColor: "green",
     color: "black",
     fontWeight: 500,
   };
@@ -45,7 +45,7 @@ const AddNote = (props) => {
       color: "black",
     };
     buttonStyle = {
-      backgroundColor: "orange",
+      backgroundColor: "green",
       color: "black",
       fontWeight: 500,
     };
@@ -134,7 +134,7 @@ const AddNote = (props) => {
           <button
             disabled={note.title.length < 5 || note.description.length < 5}
             type="submit"
-            className="btn "
+            className="btn"
             onClick={handleClick}
             style={buttonStyle}
           >
