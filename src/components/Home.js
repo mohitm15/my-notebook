@@ -20,7 +20,7 @@ const Home = (props) => {
   } else if (theme.anotherDark) {
     noteStyle = {
       backgroundColor: "black",
-      color: "#84ff00",
+      color: "#00c548",
     };
   }
 

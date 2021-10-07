@@ -27,7 +27,7 @@ const About = () => {
         }
     } else if(theme.anotherDark) {
         aboutStyle = {
-            color: '#84ff00',
+            color: '#00c548',
             paddingBottom:'600px'
         }
     }

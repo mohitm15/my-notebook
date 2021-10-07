@@ -25,6 +25,11 @@ const Noteitem = (props) => {
   let cardHeader = {
     backgroundColor: "#e5e5e5",
   };
+  let tagBgColor = {
+    backgroundColor: "#b2dbf7",
+    color: "#39739d",
+    fontWeight:'500',
+  };
 
   if (theme.light) {
     cardStyle = {
@@ -35,6 +40,12 @@ const Noteitem = (props) => {
     cardHeader = {
       backgroundColor: "#e5e5e5",
     };
+    tagBgColor = {
+      backgroundColor: "#b2dbf7",
+      color: "#39739d",
+      fontWeight:'500',
+    };
+
   } else if (theme.dark) {
     cardStyle = {
       backgroundColor: "#2d2d2d",
@@ -44,16 +55,29 @@ const Noteitem = (props) => {
     cardHeader = {
       backgroundColor: "#181a1f",
     };
+    tagBgColor = {
+      backgroundColor: "#435460",
+      color: "#cde1ee",
+      borderColor: "#00000000",
+      fontWeight:'500', 
+    };
+
   } else if (theme.anotherDark) {
     cardStyle = {
       backgroundColor: "black",
-      color: "#84ff00",
-      border: "1px solid #84ff00",
+      color: "#00c548",
+      border: "1px solid #00c548",
     };
     cardHeader = {
       backgroundColor: "black",
     };
+    tagBgColor = {
+      backgroundColor: "#3d3d3d",
+      color:'#00c548',
+      fontWeight:'500',
+    };
   }
+
 
   return (
     <div className="col-md-3">
@@ -77,6 +101,17 @@ const Noteitem = (props) => {
           </div>
           <p className="card-text">{note.description} </p>
         </div>
+        <hr />
+
+        <div className="pb-3 mx-2">
+          {note.tag.split(';').map((item,key)=>{
+            return (
+              <span key={key} className="badge  mx-1 px-2 py-1" style={tagBgColor}>{item}</span>
+            )
+          })}
+        </div>
+        
+        
       </div>
     </div>
   );

@@ -65,13 +65,13 @@ const AddNote = (props) => {
   } else if (theme.anotherDark) {
     formStyle = {
       backgroundColor: "black",
-      color: "#84ff00",
+      color: "#00c548",
     };
     inputStyle = {
-      color: "#84ff00",
+      color: "#00c548",
     };
     buttonStyle = {
-      backgroundColor: "#84ff00",
+      backgroundColor: "#00c548",
       color: "black",
       fontWeight: 500,
     };
