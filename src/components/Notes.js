@@ -88,7 +88,7 @@ function Notes(props) {
       color: "#00c548",
       background:'transparent'
     };
-  } else if(theme.lushGreen) {
+  } else if(theme.darkTeal) {
     modalStyle = {
       backgroundColor:'#045b62',
       color:'white',

@@ -76,7 +76,7 @@ const Noteitem = (props) => {
       color:'#00c548',
       fontWeight:'500',
     };
-  } else if (theme.lushGreen) {
+  } else if (theme.darkTeal) {
     cardStyle = {
       backgroundColor: "#045b62",
       color: "white",

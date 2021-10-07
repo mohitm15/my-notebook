@@ -15,22 +15,22 @@ const Navbar = (props) => {
   };
 
   const handleClick1 = () => {
-    setTheme({ light: true, dark: false, anotherDark: false, lushGreen: false });
+    setTheme({ light: true, dark: false, anotherDark: false, darkTeal: false });
     //console.log("theme selected =  "+theme)
   };
 
   const handleClick2 = () => {
-    setTheme({ light: false, dark: true, anotherDark: false, lushGreen: false });
+    setTheme({ light: false, dark: true, anotherDark: false, darkTeal: false });
     //console.log("theme selected =  "+theme)
   };
 
   const handleClick3 = () => {
-    setTheme({ light: false, dark: false, anotherDark: true, lushGreen: false });
+    setTheme({ light: false, dark: false, anotherDark: true, darkTeal: false });
     //console.log("theme selected =  "+theme)
   };
 
   const handleClick4 = () => {
-    setTheme({ light: false, dark: false, anotherDark: false, lushGreen: true });
+    setTheme({ light: false, dark: false, anotherDark: false, darkTeal: true });
   }
 
   return (
@@ -101,7 +101,7 @@ const Navbar = (props) => {
                 </li>
                 <li>
                   <button className="dropdown-item" onClick={handleClick4}>
-                    Lush Green
+                    Dark Teal
                   </button>
                 </li>
               </ul>

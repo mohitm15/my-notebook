@@ -22,7 +22,7 @@ const Home = (props) => {
       backgroundColor: "black",
       color: "#00c548",
     };
-  } else if (theme.lushGreen) {
+  } else if (theme.darkTeal) {
     noteStyle = {
       backgroundColor: "#045b62",
       color: "white",
