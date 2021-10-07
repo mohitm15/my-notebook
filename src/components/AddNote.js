@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import noteContext from "../context/notes/noteContext";
 import themeContext from "../context/themes/themeContext";
+import Dencrypt from "./Dencrypt";
 
 const AddNote = (props) => {
   const contextForNotes = useContext(noteContext);
@@ -80,7 +81,9 @@ const AddNote = (props) => {
   return (
     <>
       <div className="container my-5" style={formStyle}>
-        <h2>Add a note</h2>
+        <h2>
+          <Dencrypt/>
+        </h2>
 
         <form className="my-3">
           <div className="mb-3">
@@ -129,6 +132,7 @@ const AddNote = (props) => {
               value={note.tag}
               onChange={onChange}
             />
+            <div id="emailHelp" className="form-text">Enter tags seperated by <b>semicolon</b></div>
           </div>
 
           <button
