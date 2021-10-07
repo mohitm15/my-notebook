@@ -3,15 +3,20 @@ import noteContext from "../context/notes/noteContext";
 import Noteitem from "./Noteitem";
 import AddNote from "./AddNote";
 import { useHistory } from "react-router-dom";
+import themeContext from "../context/themes/themeContext";
+
 
 function Notes(props) {
   const contextForNotes = useContext(noteContext);
-  // console.log("cof notese = "+contextForNotes)
   const { notes, getNotes, editNote } = contextForNotes;
+  const contextForThemes = useContext(themeContext);
+  const {theme} = contextForThemes;
+
   const ref = useRef(null);
   const refClose = useRef(null);
   const [note, setNote] = useState({ id: "", etitle: "", edescription: "", etag: "" });
   const history = useHistory();
+
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
@@ -47,6 +52,44 @@ function Notes(props) {
     //modal ke input mei value typed ho sake,jaise jaise value change ho vese-vese note me set ho jaye
   };
 
+  let modalStyle = {
+    backgroundColor:'white',
+    color:'black',
+  }
+  let inputStyle = {
+    color: "black",
+    background:'transparent'
+  };
+
+  if(theme.light) {
+    modalStyle = {
+      backgroundColor:'white',
+      color:'black',
+    }
+    inputStyle = {
+      color: "black",
+      background:'transparent'
+    };
+  } else if(theme.dark) {
+    modalStyle = {
+      backgroundColor: "#2d2d2d",
+      color: "whitesmoke",
+    }
+    inputStyle = {
+      color: "whitesmoke",
+      background:'transparent'
+    };
+  } else if(theme.anotherDark) {
+    modalStyle = {
+      backgroundColor: "black",
+      color: "#00c548",
+    }
+    inputStyle = {
+      color: "#00c548",
+      background:'transparent'
+    };
+  }
+
   return (
     <>
       <AddNote showAlert={props.showAlert} />
@@ -67,7 +110,7 @@ function Notes(props) {
         aria-hidden="true"
       >
         <div className="modal-dialog">
-          <div className="modal-content">
+          <div className="modal-content" style={modalStyle}>
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">
                 Edit Note
@@ -91,6 +134,7 @@ function Notes(props) {
                     id="etitle"
                     name="etitle"
                     value={note.etitle}
+                    style={inputStyle}
                     aria-describedby="emailHelp"
                     onChange={onChange}
                     minLength={5}
@@ -106,6 +150,7 @@ function Notes(props) {
                     className="form-control"
                     id="edescription"
                     name="edescription"
+                    style={inputStyle}
                     value={note.edescription}
                     onChange={onChange}
                     minLength={5}
@@ -123,6 +168,7 @@ function Notes(props) {
                     name="etag"
                     value={note.etag}
                     onChange={onChange}
+                    style={inputStyle}
                   />
                 </div>
               </form>
