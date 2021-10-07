@@ -76,6 +76,22 @@ const Noteitem = (props) => {
       color:'#00c548',
       fontWeight:'500',
     };
+  } else if (theme.lushGreen) {
+    cardStyle = {
+      backgroundColor: "#045b62",
+      color: "white",
+      border: "1px solid white",
+    };
+    cardHeader = {
+      backgroundColor: "#0d393d",
+    };
+    tagBgColor = {
+      backgroundColor: "#42959e",
+      color: "#cde1ee",
+      borderColor: "#00000000",
+      fontWeight:'500', 
+    };
+
   }
 
 

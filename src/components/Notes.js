@@ -88,6 +88,15 @@ function Notes(props) {
       color: "#00c548",
       background:'transparent'
     };
+  } else if(theme.lushGreen) {
+    modalStyle = {
+      backgroundColor:'#045b62',
+      color:'white',
+    }
+    inputStyle = {
+      color:'white',
+      background:'transparent'
+    }
   }
 
   return (

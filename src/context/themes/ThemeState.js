@@ -6,6 +6,7 @@ const ThemeState = (props) => {
         light: true,
         dark: false,
         anotherDark: false,
+        lushGreen:false,
     });
 
     return (

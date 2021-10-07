@@ -34,6 +34,9 @@ function App() {
   else if(theme.anotherDark) {
     bgColor = 'black';
   }
+  else if(theme.lushGreen) {
+    bgColor = '#045b62'
+  }
 
 
 

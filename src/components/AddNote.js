@@ -76,7 +76,21 @@ const AddNote = (props) => {
       color: "black",
       fontWeight: 500,
     };
+  } else if (theme.lushGreen) {
+    formStyle = {
+      backgroundColor: "#045b62",
+      color: "white",
+    };
+    inputStyle = {
+      color: "white",
+    };
+    buttonStyle = {
+      backgroundColor: "#3de8fb",
+      color: "#045b62",
+      fontWeight: 500,
+    };
   }
+
 
   return (
     <>
