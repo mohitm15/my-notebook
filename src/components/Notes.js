@@ -19,7 +19,7 @@ function Notes(props) {
 
 
   useEffect(() => {
-    if (localStorage.getItem('token')) {
+    if (localStorage.getItem('token')) { //if we get the token after login
       getNotes();
     }
     else {

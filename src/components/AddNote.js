@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { useParams, useRouteMatch } from "react-router";
 import noteContext from "../context/notes/noteContext";
 import themeContext from "../context/themes/themeContext";
 import Dencrypt from "./Dencrypt";
@@ -7,7 +8,7 @@ const AddNote = (props) => {
   const contextForNotes = useContext(noteContext);
   const { addNote } = contextForNotes;
   const [note, setNote] = useState({ title: "", description: "", tag: "" });
-
+  //const user = useParams ;
   const contextForThemes = useContext(themeContext);
   const { theme } = contextForThemes;
 
@@ -18,6 +19,8 @@ const AddNote = (props) => {
     setNote({ title: "", description: "", tag: "" });
     props.showAlert("Note added successfully!", "primary");
   }
+
+  // console.log(" user - "+user)
 
   const onChange = (e) => {
     //setting the value of note.title/note.description to the input value
@@ -95,6 +98,9 @@ const AddNote = (props) => {
   return (
     <>
       <div className="container my-5" style={formStyle}>
+        <div>
+          <h2>Welcome Mohit</h2>
+        </div>
         <h2>
           <Dencrypt/>
         </h2>
