@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import imgpath from "../assets/notepic.jpg";
+import { motion } from "framer-motion";
 
 const Login = (props) => {
   let history = useHistory();
@@ -41,7 +42,7 @@ const Login = (props) => {
   };
 
   return (
-    <div className="container" id="manku">
+    <motion.div className="container" id="manku" animate={{scale:[0.5,1]}} transition={{times:[0.1,0.4], ease:'easeInOut'}}>
       <div id="picturebody">
         <img src={imgpath} alt="note-pic" width="100%" />
       </div>
@@ -101,7 +102,7 @@ const Login = (props) => {
         </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

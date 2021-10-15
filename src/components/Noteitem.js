@@ -1,6 +1,8 @@
 import React, { useContext, useRef } from "react";
 import noteContext from "../context/notes/noteContext";
 import themeContext from "../context/themes/themeContext";
+import {motion} from 'framer-motion'
+
 
 const Noteitem = (props) => {
   const contextForNotes = useContext(noteContext);
@@ -146,7 +148,14 @@ const Noteitem = (props) => {
       </div>
 
       
-      <div className={`card text  mb-3 my-3`} id="notecard" style={cardStyle}>
+      <motion.div className={`card text  mb-3 my-3`} id="notecard" style={cardStyle}
+        //whileHover={{scale:'1.2'}}
+        whileTap={{scale:'0.9'}}
+        animate={{
+          scale: [1, 2, 2, 2, 1,1],
+          rotate: [0, 0, 270, -270, -120,0],
+          borderRadius: ["20%", "20%", "50%", "50%", "20%","0%"],}}
+        >
         <div className="card-header " style={cardHeader}>
           NOTE
           <span className="d-flex justify-content-end">
@@ -168,16 +177,18 @@ const Noteitem = (props) => {
         </div>
         <hr />
 
-        <div className="pb-3 mx-2">
+        <motion.div className="pb-3 mx-2"
+          animate={{scale:[2,1]}}
+          transition={{duration:[0.5,1]}}>
           {note.tag.split(';').map((item, key) => {
             return (
               <span key={key} className="badge  mx-1 px-2 py-1" style={tagBgColor}>{item}</span>
             )
           })}
-        </div>
+        </motion.div>
 
 
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
-import { useParams, useRouteMatch } from "react-router";
 import noteContext from "../context/notes/noteContext";
 import themeContext from "../context/themes/themeContext";
 import Dencrypt from "./Dencrypt";
+import { AnimateSharedLayout, motion } from "framer-motion";
 
 const AddNote = (props) => {
   const contextForNotes = useContext(noteContext);
@@ -99,14 +99,22 @@ const AddNote = (props) => {
     <>
       <div className="container my-5" style={formStyle}>
         <div>
-          <h2>Welcome Mohit</h2>
+          <motion.h1 
+           animate={{ x:[120,60,45,30,21,12,6,2,-20]}}
+           transition={{ease:'linear',duration:'2',times:[0,0.4,0.6,1,1.3,1.7,3,4,5]}}
+          >
+            Welcome Mohit
+          </motion.h1>
         </div>
-        <h2>
+        <motion.h2
+          animate={{x:[0,60,120,240,600]}}
+          transition={{delay:3, duration:3.8,times:[0,0.3,0.5,1,2],ease:'linear'}}
+          >
           <Dencrypt/>
-        </h2>
-
+        </motion.h2>
+        <AnimateSharedLayout>
         <form className="my-3">
-          <div className="mb-3">
+          <motion.div layout className="mb-3">
             <label htmlFor="title" className="form-label">
               Title
             </label>
@@ -122,7 +130,7 @@ const AddNote = (props) => {
               minLength={5}
               required
             />
-          </div>
+          </motion.div>
           <div className="mb-3">
             <label htmlFor="description" className="form-label">
               Description
@@ -165,6 +173,7 @@ const AddNote = (props) => {
             Submit
           </button>
         </form>
+        </AnimateSharedLayout>
       </div>
     </>
   );
