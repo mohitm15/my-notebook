@@ -6,7 +6,7 @@ const Navbar = (props) => {
   let location = useLocation();
   let history = useHistory();
   const contextForThemes = useContext(themeContext);
-  const { setTheme } = contextForThemes;
+  const { theme, setTheme } = contextForThemes;
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -31,10 +31,42 @@ const Navbar = (props) => {
 
   const handleClick4 = () => {
     setTheme({ light: false, dark: false, anotherDark: false, darkTeal: true });
+  };
+
+  let navbarStyle = {
+    backgroundColor: "#212529",
+  };
+  let buttonStyle = {
+    backgroundColor: "blue",
+    color:'white'
+  }
+  if(theme.dark) {
+    buttonStyle = {
+      backgroundColor:'#0b0b6fdb',
+      color:'white'
+    }
+  }
+  else if(theme.anotherDark) {
+    buttonStyle = {
+      backgroundColor:'#00C548',
+      color:'black'
+    }
+  }
+  else if (theme.darkTeal) {
+    navbarStyle = {
+      backgroundColor: "#02393e",
+    };
+    buttonStyle = {
+      backgroundColor:'#4F8AA7',
+      color:'white'
+    }
   }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav
+      className="navbar navbar-expand-lg navbar-dark bg-custom"
+      style={navbarStyle}
+    >
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           Navbar
@@ -118,10 +150,7 @@ const Navbar = (props) => {
               </Link>
             </form>
           ) : (
-            <button
-              className={`btn btn-primary mx-2`}
-              onClick={handleLogout}
-            >
+            <button className={`btn btn-custom mx-2`} style={buttonStyle} onClick={handleLogout}>
               Logout
             </button>
           )}
