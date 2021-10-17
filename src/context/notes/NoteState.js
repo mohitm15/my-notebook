@@ -103,8 +103,31 @@ const NoteState = (props) => {
     
     }
 
+    //making a copy of note
+    const makecopyNote = async(id,title,description,tag) => {
+
+      const url = `${host}/api/notes/makecopynote/${id}`;
+      //API call
+      const response = await fetch(url, {
+          method: 'POST', 
+          headers: {
+            'Content-Type': 'application/json',
+            'auth-token' : localStorage.getItem('token')
+          },
+          body:JSON.stringify({title,description, tag})
+        });
+      
+      const notetobeadded =await response.json();
+      //console.log(notetobeadded);
+
+      //setting the note to the notes array
+      setNotes(notes.concat(notetobeadded));
+
+  }
+
+
     return(
-        <NoteContext.Provider value={{notes,getNotes,addNote,deleteNote,editNote}}>
+        <NoteContext.Provider value={{notes,getNotes,addNote,deleteNote,editNote,makecopyNote}}>
             {props.children}
         </NoteContext.Provider>
     )

@@ -8,7 +8,7 @@ import themeContext from "../context/themes/themeContext";
 
 function Notes(props) {
   const contextForNotes = useContext(noteContext);
-  const { notes, getNotes, editNote } = contextForNotes;
+  const { notes, getNotes, editNote, makecopyNote } = contextForNotes;
   const contextForThemes = useContext(themeContext);
   const {theme} = contextForThemes;
 
@@ -30,6 +30,7 @@ function Notes(props) {
 
   //it sets the already present value to the modal's input field
   const updateNote = (currentNote) => {
+    //console.log("current-"+currentNote)
     ref.current.click();  //it clicks the refered element i.e. button here
     setNote({
       id: currentNote._id,
@@ -38,6 +39,13 @@ function Notes(props) {
       etag: currentNote.tag,
     });
   };
+
+  const copyNote = (origNote) => {
+    //console.log("orig - "+origNote)
+    makecopyNote(origNote._id, origNote.title, origNote.description, origNote.tag);
+    props.showAlert("Note Copied Successfully", "info");
+
+  }
 
   const handleClick = (e) => {
     refClose.current.click();
@@ -208,7 +216,7 @@ function Notes(props) {
         <h2>Your Notes</h2>
         <div className="row my-3">
           {notes.map((item, key) => {
-            return <Noteitem key={key} updateNote={updateNote} note={item} showAlert={props.showAlert} />; //note value is sent from props to noteitem
+            return <Noteitem key={key} updateNote={updateNote} note={item} showAlert={props.showAlert} copyNote={copyNote} />; //note value is sent from props to noteitem
           })}
         </div>
       </div>

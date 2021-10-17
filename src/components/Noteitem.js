@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const Noteitem = (props) => {
   const contextForNotes = useContext(noteContext);
   const { deleteNote } = contextForNotes;
-  const { note, updateNote } = props;
+  const { note, updateNote, copyNote } = props;
   // updatenote is used here by edit-icon
   const contextForThemes = useContext(themeContext);
   const { theme } = contextForThemes;
@@ -19,56 +19,7 @@ const Noteitem = (props) => {
     //it calls the handle click of the delete button in modal which is used when we click icon of delete
   };
 
-  // function dateFormat(dateGiven) {
-  //   const year = dateGiven.slice(2, 4);
-  //   const month = dateGiven.slice(5, 6);
-  //   let monthName = "Jan";
-  //   switch (month) {
-  //     case '01':
-  //       monthName = "Jan";
-  //       break;
-  //     case '02':
-  //       monthName = "Feb";
-  //       break;
-  //     case '03':
-  //       monthName = "Mar";
-  //       break;
-  //     case '04':
-  //       monthName = "Apr";
-  //       break;
-  //     case '05':
-  //       monthName = "May";
-  //       break;
-  //     case '06':
-  //       monthName = "Jun";
-  //       break;
-  //     case '07':
-  //       monthName = "Jul";
-  //       break;
-  //     case '08':
-  //       monthName = "Aug";
-  //       break;
-  //     case '09':
-  //       monthName = "Sept";
-  //       break;
-  //     case '10':
-  //       monthName = "Oct";
-  //       break;
-  //     case '11':
-  //       monthName = "Nov";
-  //       break;
-  //     case '12':
-  //       monthName = "Dec";
-  //       break;
-  //     default:
-  //       monthName = "Jan";
-  //       break;
-  //   };
-  //   const day=dateGiven.slice(8,9);
-  //   console(year+monthName+day);
-  //   const ans = day+" "+month+"'"+year;
-  //   return ans;
-  // }
+  
 
   const date = note.date;
   const day = date.slice(8,10)+"-"+date.slice(5,7)+"-"+date.slice(2,4);
@@ -247,6 +198,7 @@ const Noteitem = (props) => {
               className="far fa-edit mx-2"
               onClick={() => updateNote(note)}
             ></i>
+            <i className="far fa-clone mx-2" onClick={() => copyNote(note)}></i>
           </span>
         </div>
         <div className="card-body">
