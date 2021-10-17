@@ -193,12 +193,14 @@ const Noteitem = (props) => {
             <i
               className="fas fa-trash-alt mx-2 "
               onClick={() => handleDelete()}
+              title = "Delete Note"
             ></i>
             <i
               className="far fa-edit mx-2"
               onClick={() => updateNote(note)}
+              title= "Update Note"
             ></i>
-            <i className="far fa-clone mx-2" onClick={() => copyNote(note)}></i>
+            <i className="far fa-clone mx-2" onClick={() => copyNote(note)} title="Copy Note"></i>
           </span>
         </div>
         <div className="card-body">
