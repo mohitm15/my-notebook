@@ -122,4 +122,35 @@ router.delete("/deletenote/:id", fetchUser, async (req, res) => {
     res.status(500).send("internal server error");
   }
 });
+
+//Route 5: Make a copy of a note of a particular user POST: /api/notes/makecopynote/:id
+
+router.post("/makecopynote/:id",fetchUser,async(req,res)=>{
+  try{
+
+    let origNote = await Notes.findById(req.params.id);
+    const { description, tag } = origNote;
+    let title = origNote.title;
+    title = title + " COPY";
+    
+    //creating a new note
+    const duplicateNote = new Notes({
+      title,
+      description,
+      tag,
+      user: req.user.id,
+    });
+
+    //console.log(duplicateNote)
+
+    const savedNote = await duplicateNote.save();
+    res.json(savedNote);
+  
+  }
+  catch(error){
+    console.log(error.message);
+    res.status(500).send('internal server error')
+  }
+})
+
 module.exports = router;
