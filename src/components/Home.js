@@ -28,6 +28,13 @@ const Home = (props) => {
       color: "white",
     };
   }
+    else if(theme.rainbow) {
+      noteStyle = {
+        backgroundColor: "black",
+        color: "black"
+      }
+    }
+  
 
   return (
     <div style={noteStyle}>

@@ -92,6 +92,20 @@ const AddNote = (props) => {
       color: "#045b62",
       fontWeight: 500,
     };
+  } else if(theme.rainbow) {
+    formStyle = {
+      backgroundColor: "black",
+      background: "conic-gradient( violet, indigo, blue, green, yellow, orange, red)"
+    };
+    inputStyle = {
+      color: "linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red)"
+    };
+    buttonStyle = {
+      background:"linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red)",
+      color: "black",
+      border:'3px solid black',
+      fontWeight: 800,
+    };
   }
 
 

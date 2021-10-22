@@ -15,22 +15,26 @@ const Navbar = (props) => {
   };
 
   const handleClick1 = () => {
-    setTheme({ light: true, dark: false, anotherDark: false, darkTeal: false });
+    setTheme({ light: true, dark: false, anotherDark: false, darkTeal: false, rainbow:false });
     //console.log("theme selected =  "+theme)
   };
 
   const handleClick2 = () => {
-    setTheme({ light: false, dark: true, anotherDark: false, darkTeal: false });
+    setTheme({ light: false, dark: true, anotherDark: false, darkTeal: false, rainbow:false });
     //console.log("theme selected =  "+theme)
   };
 
   const handleClick3 = () => {
-    setTheme({ light: false, dark: false, anotherDark: true, darkTeal: false });
+    setTheme({ light: false, dark: false, anotherDark: true, darkTeal: false, rainbow:false });
     //console.log("theme selected =  "+theme)
   };
 
   const handleClick4 = () => {
-    setTheme({ light: false, dark: false, anotherDark: false, darkTeal: true });
+    setTheme({ light: false, dark: false, anotherDark: false, darkTeal: true, rainbow:false });
+  };
+
+  const handleClick5 = () => {
+    setTheme({ light: false, dark: false, anotherDark: false, darkTeal: false, rainbow:true });
   };
 
   let navbarStyle = {
@@ -59,6 +63,12 @@ const Navbar = (props) => {
     buttonStyle = {
       backgroundColor:'#4F8AA7',
       color:'white'
+    }
+  }
+  else if (theme.rainbow) {
+    buttonStyle = {
+      background:"linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red)",
+      color:"black"
     }
   }
 
@@ -134,6 +144,11 @@ const Navbar = (props) => {
                 <li>
                   <button className="dropdown-item" onClick={handleClick4}>
                     Dark Teal
+                  </button>
+                </li>
+                <li>
+                  <button className="dropdown-item" onClick={handleClick5}>
+                    Rainbow
                   </button>
                 </li>
               </ul>

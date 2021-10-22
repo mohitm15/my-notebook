@@ -122,6 +122,26 @@ const Noteitem = (props) => {
       backgroundColor: "#045b62",
       color: "white",
     };
+  } else if(theme.rainbow) {
+    cardStyle = {
+      background:"conic-gradient( violet, indigo, blue, green, yellow, orange, red)",
+      backgroundColor:"black",
+      color: "black",
+      border:"1px solid transparent"
+    };
+    cardHeader = {
+      backgroundColor: "transparent "
+    };
+    tagBgColor = {
+      backgroundColor: "#42959e",
+      color: "#cde1ee",
+      borderColor: "#00000000",
+      fontWeight: "500",
+    };
+    modalStyle = {
+      color:'black',
+      background:"conic-gradient( violet, indigo, blue, green, yellow, orange, red)"
+    }
   }
 
   return (

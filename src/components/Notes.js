@@ -105,6 +105,16 @@ function Notes(props) {
       color:'white',
       background:'transparent'
     }
+  } else if(theme.rainbow) {
+    modalStyle = {
+      backgroundColor: 'black',
+      background:"conic-gradient( violet, indigo, blue, green, yellow, orange, red)",
+      
+    }
+    inputStyle = {
+      color:"black",
+      background:'transparent',
+    }
   }
 
   return (
@@ -140,9 +150,9 @@ function Notes(props) {
               ></button>
             </div>
             <div className="modal-body">
-              <form className="my-3">
+              <form className="my-3 text">
                 <div className="mb-3">
-                  <label htmlFor="title" className="form-label">
+                  <label htmlFor="title" className="form-label" >
                     Title
                   </label>
                   <input
@@ -175,7 +185,7 @@ function Notes(props) {
                   />
                 </div>
                 <div className="mb-3">
-                  <label htmlFor="tag" className="form-label">
+                  <label htmlFor="tag" className="form-label" >
                     Tag
                   </label>
                   <input

@@ -31,12 +31,13 @@ function App() {
   else if(theme.dark) {
     bgColor = '#2d2d2d';
   }
-  else if(theme.anotherDark) {
+  else if(theme.anotherDark || theme.rainbow) {
     bgColor = 'black';
   }
   else if(theme.darkTeal) {
     bgColor = '#045b62'
   }
+  
 
 
 
