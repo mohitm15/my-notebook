@@ -60,6 +60,11 @@ function Notes(props) {
     //modal ke input mei value typed ho sake,jaise jaise value change ho vese-vese note me set ho jaye
   };
 
+  const setGridView = () => {
+     
+      
+  }
+
   let modalStyle = {
     backgroundColor:'white',
     color:'black',
@@ -223,13 +228,24 @@ function Notes(props) {
       </div>
 
       <div className="my-5">
-        <h2>Your Notes</h2>
-        <div className="row my-3">
+        <h2>Your Notes
+          <span className="mx-5">
+          <i className="fas fa-th mx-3" title="Gird View" onClick={setGridView} id="viewMode"></i>
+          <i class="fas fa-list" title="List View"></i>
+          </span>
+        </h2>
+        <div className="row">
+        {/* <div className="row justify-content-center my-3 "> */}
+          {/* <div className="col col-12"> */}
           {notes.map((item, key) => {
             return <Noteitem key={key} updateNote={updateNote} note={item} showAlert={props.showAlert} copyNote={copyNote} />; //note value is sent from props to noteitem
           })}
+          {/* </div> */}
+        {/* </div> */}
+
         </div>
-      </div>
+        </div>
+      
     </>
   );
 }
