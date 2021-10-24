@@ -16,7 +16,7 @@ function Notes(props) {
   const refClose = useRef(null);
   const [note, setNote] = useState({ id: "", etitle: "", edescription: "", etag: "" });
   const history = useHistory();
-
+  const [listView, setlistView] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem('token')) { //if we get the token after login
@@ -60,10 +60,7 @@ function Notes(props) {
     //modal ke input mei value typed ho sake,jaise jaise value change ho vese-vese note me set ho jaye
   };
 
-  const setGridView = () => {
-     
-      
-  }
+
 
   let modalStyle = {
     backgroundColor:'white',
@@ -229,22 +226,31 @@ function Notes(props) {
 
       <div className="my-5">
         <h2>Your Notes
-          <span className="mx-5">
-          <i className="fas fa-th mx-3" title="Gird View" onClick={setGridView} id="viewMode"></i>
-          <i class="fas fa-list" title="List View"></i>
+          <span className="mx-5 fa-stack">
+          <i className={listView?"fas fa-th fa-stack":"fas fa-list"} title="List View" onClick={()=>{setlistView(!listView)}} id="viewIcon"> 
+          </i>
           </span>
         </h2>
-        <div className="row">
-        {/* <div className="row justify-content-center my-3 "> */}
-          {/* <div className="col col-12"> */}
-          {notes.map((item, key) => {
-            return <Noteitem key={key} updateNote={updateNote} note={item} showAlert={props.showAlert} copyNote={copyNote} />; //note value is sent from props to noteitem
-          })}
-          {/* </div> */}
-        {/* </div> */}
+        {
+          listView ? (
+            <div className="row">
+              <div className= "">
+                {notes.map((item, key) => {
+                  return <Noteitem key={key} updateNote={updateNote} note={item} showAlert={props.showAlert} copyNote={copyNote} />; //note value is sent from props to noteitem
+                })}
+              </div>
+            </div>
+          ) : 
+          (
+            <div className="row">
+                {notes.map((item, key) => {
+                  return <Noteitem key={key} updateNote={updateNote} note={item} showAlert={props.showAlert} copyNote={copyNote} />; //note value is sent from props to noteitem
+                })}
+            </div>
+          )
+        }
 
-        </div>
-        </div>
+      </div>
       
     </>
   );
