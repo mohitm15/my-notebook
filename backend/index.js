@@ -15,7 +15,7 @@ app.use(express.json())
 app.use('/api/auth',require('./routes/auth'));
 app.use('/api/notes',require('./routes/notes'));
 
-app.listen(process.env.PORT || port , () => {
-  console.log(`my-notebook backend listening at http://localhost:${process.env.PORT || port}`)
+app.listen(process.env.PORT  , () => {
+  console.log(`my-notebook backend listening at http://localhost:${process.env.PORT }`)
 })
 
