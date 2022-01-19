@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const Login = (props) => {
   let history = useHistory();
-  let port = process.env.PORT || 5000;
+  
   const [credentials, setCredentials] = useState({ email: "", password: "" });
 
   const onChange = (e) => {
