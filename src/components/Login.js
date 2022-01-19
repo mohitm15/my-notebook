@@ -19,7 +19,7 @@ const Login = (props) => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`http://localhost:${port}/api/auth/login`, {
+    const response = await fetch(`https://my-notebook-mohit.herokuapp.com:${port}/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
