@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const mongoURI = "mongodb+srv://mohit_maroliya:gw$@yG9W++%j@cluster0.n03hm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 const connectToMongo = async() => {
-    mongoose.connect(mongoURI, {useNewUrlParser: true}, ()=> {
+    await mongoose.connect(mongoURI, {useNewUrlParser: true}, ()=> {
         console.log("Connected to Mongo Successfully!");
     })
 }
