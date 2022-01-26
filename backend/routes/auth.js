@@ -25,13 +25,13 @@ router.post(
 
     try {
       //Check whether email exists
-      let user;
-      //let user = await User.findOne({ email: req.body.email });
-      //console.log("user.nemail = " + user);
-      //if (user) {
+      //let user;
+      let user = await User.findOne({ email: req.body.email });
+      console.log("user.nemail = " + user);
+      if (user) {
         //console.log(user.email);
-        //return res.status(400).json({success, error: "Email Already Taken" });
-      //}
+        return res.status(400).json({success, error: "Email Already Taken" });
+      }
 
       //hashing the password here
       const salt = await bcrypt.genSalt(10);
