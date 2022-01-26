@@ -25,6 +25,7 @@ router.post(
 
     try {
       //Check whether email exists
+      let user;
       //let user = await User.findOne({ email: req.body.email });
       //console.log("user.nemail = " + user);
       //if (user) {
