@@ -4,7 +4,7 @@ const mongoURI = "mongodb+srv://mohit_maroliya:gw$@yG9W++%j@cluster0.n03hm.mongo
 
 const connectToMongo = async() => {
     try {
-        await mongoose.connect(mongoURI, {useNewUrlParser: true}, ()=> {
+         mongoose.connect(mongoURI, {useNewUrlParser: true}, ()=> {
             console.log("Connected to Mongo Successfully!");
         })
     }

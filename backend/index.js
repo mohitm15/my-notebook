@@ -1,21 +1,25 @@
-const connectToMongo = require('./db');
-const express = require('express');
+const connectToMongo = require("./db");
+const express = require("express");
 
+const start = async () => {
+  await connectToMongo();
+  var cors = require("cors");
+  const app = express();
+  // const port = 5000
 
-connectToMongo();
-var cors = require('cors')
-const app = express()
-// const port = 5000
+  //to use req body
+  app.use(cors());
+  app.use(express.json());
 
-//to use req body 
-app.use(cors())
-app.use(express.json())
+  //Available routes
+  app.use("/api/auth", require("./routes/auth"));
+  app.use("/api/notes", require("./routes/notes"));
 
-//Available routes
-app.use('/api/auth',require('./routes/auth'));
-app.use('/api/notes',require('./routes/notes'));
+  app.listen(process.env.PORT, () => {
+    console.log(
+      `my-notebook backend listening at https://my-notebook-mohit.herokuapp.com:${process.env.PORT}`
+    );
+  });
+};
 
-app.listen(process.env.PORT  , () => {
-  console.log(`my-notebook backend listening at https://my-notebook-mohit.herokuapp.com:${process.env.PORT }`)
-})
-
+start();
