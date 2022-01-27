@@ -1,8 +1,6 @@
 const connectToMongo = require("./db");
 const express = require("express");
 
-const start = async () => {
-  await connectToMongo();
   var cors = require("cors");
   const app = express();
   // const port = 5000
@@ -15,11 +13,14 @@ const start = async () => {
   app.use("/api/auth", require("./routes/auth"));
   app.use("/api/notes", require("./routes/notes"));
 
-  app.listen(process.env.PORT, () => {
-    console.log(
-      `my-notebook backend listening at https://my-notebook-mohit.herokuapp.com:${process.env.PORT}`
-    );
-  });
-};
+  connectToMongo().then(()=> {
 
-start();
+    app.listen(process.env.PORT, () => {
+      console.log(
+        `my-notebook backend listening at https://my-notebook-mohit.herokuapp.com:${process.env.PORT}`
+      );
+    });
+  }).catch(err => {
+    console.error(err)
+  });
+
