@@ -14,37 +14,12 @@
     <a href="https://github.com/mohitm15/my-notebook"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://my-notebook-mohit.netlify.app/">View Demo</a>
     
     
   </p>
 </p>
 
-
-
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-       <li><a href="#runningcode">Running the code</a></li>
-      </ul>
-    </li>
-    <li><a href="#rpreview">Preview</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ol>
-</details>
 
 
 
@@ -66,6 +41,47 @@ my-notebook is a web application that is used to keep your notes securly. Each u
 
 
 
+## Preview
+
+### Live site
+
+  [Link here](https://my-notebook-mohit.netlify.app/)
+
+### ScreenShots
+
+#### _SignUp Page_
+
+![signup_page](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/06v52ia1umt3pqzjs7a5.png)
+
+#### _Login Page_
+
+
+
+![login_page](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/92lt03wfto33xgspcctj.png)
+
+
+#### _Home Page_
+
+
+- Theme : **Dark**
+
+![homepage_dark](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/igkrq7azed7sq6p4ktpj.png)
+
+- Theme : **High Contrast**
+
+![homepage_highcontrast](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/98r1q9p0qy6detyprg3x.png)
+
+- Theme : **Dark Teal**
+
+![homepage_teal](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wlxugxr5lh7ok7ve22m2.png)
+
+- Theme : **Rainbow**
+
+![homepage_rainbow](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/x331zpeaspibuo9gw50u.png)
+
+#### Demo video
+
+[video](https://kapwi.ng/c/VdweXzAmR-)
 
 <!-- GETTING STARTED -->
 ## Getting Started
